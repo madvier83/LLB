@@ -1,0 +1,11 @@
+@media print {
+    .prins {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .custom-class-info {
+        display: flex;
+        flex-direction: column;
+    }
+}

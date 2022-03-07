@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bowlby+One&display=swap'); */
+/* .print__preview__header {
+    display:flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.print__preview__header .print__preview__header__image img {
+    width: 200px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+.print__preview__header .print__preview__header__setting table {
+    width: 100%;
+}
+
+.print__preview__header .print__preview__header__setting table tbody {
+    width: 120px;
+}
+
+.print__preview__header .print__preview__header__setting table,th,td {
+    border: 1px solid #000;
+    
+} */
+
+
+
+.print__setting {
+    font-size: 20px;
+}
+
+/* .print__setting .not-alamat {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+} */
+
+/* .print__setting .not-alamat > div.mx-4 {
+    width: 30%;
+} */
+
+
+
+/* .printw {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.print__logo img {
+    width: 200px;
+    height: 100px;
+}
+
+
+
+
+
+@media print {
+   
+
+    .print__setting .alamat  {
+        position: relative;
+        left:11px;
+        top: 22px;
+        width: 215px;
+        font-size: 11px;
+    }
+
+    .print__setting p {
+        font-size: 8px;
+    }
+
+    .print__setting .not-alamat {
+        position: relative;
+        left: 0px;
+        top: 30px;
+    }
+
+    .print__setting .not-alamat > div {
+        position: absolute;
+    }
+
+    .print__setting .not-alamat > div p {
+        font-size: 11px;
+    }
+
+    .print__setting .not-alamat > div:first-child {
+        left: 20px;
+        top: -30px;
+    }
+
+    .print__setting .not-alamat > div:nth-child(2) {
+        left: 110px;
+        top: -30px;
+    }
+
+   
+    .print__setting .not-alamat > div:nth-child(3) {
+        left: 20px;
+        top: -5px;
+    }
+
+    
+    .print__setting .not-alamat > div:last-child {
+        left: 110px;
+        top: -5px;
+    }
+   
+    .print__wrapper *  {
+        font-family: 'Source Serif 4', sans-serif;
+        color: #000;
+        font-weight: bold;
+        font-size: 10px;
+        
+    }
+    .print__wrapper {
+        width: 100% !important; 
+        margin: 0; 
+        float: none;
+        transform: rotate(90deg);
+        position: relative;
+        
+    }
+
+    
+
+    .print__content pre  {
+        position: relative;
+        top: -25px;
+        display: block;
+       max-width: 567px;
+         white-space: pre-wrap;
+         word-wrap: break-word;
+        
+    }
+
+    .print__content pre p {
+        font-size: 12pt;
+        margin: 3px 0;
+    }
+    
+
+    .print__logo img {
+        width: 220px;
+        height: 80px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        left: -10px;
+        top: 20px;
+        
+    }
+} */
+
+
+/* .new__release {
+    width: 100%;
+    height: 100%;
+     margin: 10px;
+     color: #000;
+     
+}
+
+@media print {
+    .new__release {
+        
+            width: 100% !important; 
+            margin: 0; 
+            float: none;
+            transform: rotate(90deg);
+            position: relative;
+            
+        
+    }
+
+    .flexs {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+} */
+
+
+/* @media print {
+    .printa {
+        transform: rotate(90deg);
+        height: 100%;
+        width: 100%;
+    }
+
+    .flex__1 {
+        display: flex;
+        flex-direction: row;
+    }
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper__xyz {
+    height: 10cm;
+    width: 14cm;
+
+    /* remove gawhile print */
+
+
+    /* margin: 10px auto; */
+}
+
+.wrapper_last {
+    margin: 0 0;
+    width: 100%;
+    padding: 0;
+
+}
+
+header {
+    background-color: red;
+}
+
+header .image {
+    float: left;
+    width: 5cm;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    /* background-image: url('../../Assets/Logo/label.png'); */
+    /* background-size : 5cm 2.4cm; */
+    /* background-position: center center; */
+    /* background-repeat: no-repeat; */
+    height: 2.5cm;
+}
+
+
+header .image img {
+    width: 4.9cm;
+    /* margin-top: 4.5px;
+    margin-left: -20px; */
+}
+
+#alamat {
+    max-width: 567px;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+
+header .table_mm {
+    float: left;
+    /* width: 9.89cm; */
+    height: 2.5cm;
+}
+
+header .table_mm table {
+    width: 9cm;
+    height: 2.5cm;
+    border-right: 1px solid #000;
+}
+
+header .table_mm table th {
+    width: 4.5cm;
+    padding-left: 15px;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    color: #000;
+    font-size: 8px;
+    /* display: inline-block; */
+}
+
+.content {
+    clear: both;
+    padding: .5cm 1cm 0 1cm;
+    border: 1px solid #000;
+    width: 14cm;
+
+}
+
+.content .truecontent pre .alamat {
+    max-width: 14cm;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+table thead .kodecustomer {
+    font-size: 16px !important;
+    text-align: center;
+}
+
+/* make a css for table__kodecustomer make a string 2 lines */
+table .table__kodecustomer {
+    /* font-family: 'Bebas Neue', cursive; */
+    font-family: 'Bowlby One', cursive;
+    /* font-family: 'Archivo Black', sans-serif; */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+
+}
+
+
+@media print {
+    * {
+        margin: 0;
+        padding: 0;
+        color: #000;
+    }
+
+    body {
+        margin: 0.6cm 0.3cm 0cm 0.7cm;
+    }
+
+    table .table__kodecustomer {
+        /* font-family: 'Bebas Neue', cursive; */
+        font-family: 'Bowlby One', cursive;
+        /* font-family: 'Archivo Black', sans-serif; */
+        font-size: 16px;
+        /* font-weight: 600; */
+        text-align: center;
+        letter-spacing: 3px;
+        line-height: 20px;
+        font-weight: bold;
+    }
+
+    .wrapper__xyz {
+        orientation: landscape;
+        /* margin-top: -10px; */
+        page-break-after: always;
+        /* height: 9cm; */
+        height: 9.5cm;
+        width: 14.5cm;
+        clear: both;
+        margin-top: 22px;
+        /* display: block; */
+    }
+
+    header .table_mm table {
+        width: 9.04cm;
+        height: 2.5cm;
+        border-right: 1px solid #000;
+    }
+
+    header .table_mm table th {
+        font-size: 10px;
+        padding: 2px 5px;
+
+    }
+
+    .content .truecontent pre p {
+        font-size: 12pt;
+        margin: 3px 0;
+        font-weight: bold;
+        color: #000;
+    }
+
+    #alamat {
+        font-size: 10pt;
+        margin: 3px 0;
+        font-weight: bold;
+        color: #000;
+    }
+
+    /* header .image {
+      content: url('../../Assets/Logo/label.png');
+      padding-top: 10px;
+      background-position: center center;
+    } */
+
+    table thead .kodecustomer {
+        font-size: 12px;
+    }
+}

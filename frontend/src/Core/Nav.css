@@ -1,0 +1,20 @@
+.sidebar {
+    width: 200px;
+    background-color: cornflowerblue;
+    position: fixed;
+    min-height: 100vh;
+    padding: 20px;
+    /* bottom: 0; */
+    top: 62px;
+}
+
+
+.sidebar .suryono, .rizsur,a {
+    text-decoration: none;
+    list-style-type: none;
+    color: white;
+}
+
+.rizsur {
+    padding: 20px 0;
+}
