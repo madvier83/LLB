@@ -17,7 +17,9 @@ import Queues from './Pages/Queues/Queues';
 import EditQueue from './Pages/Queues/EditQueue';
 import PrintQueueAll from './Pages/Queues/PrintQueueAll';
 import PreviewQueue from './Pages/Queues/PreviewQueue';
-function App() {
+
+import Prints from './Pages/Queues/Prints';
+function App () {
 
   const token = localStorage.getItem('token')
 
@@ -43,6 +45,7 @@ function App() {
           <Route path='/queues/edit/:id' element={<EditQueue />}></Route>
           <Route path='/queues/preview/:id_customers' element={<PreviewQueue />}></Route>
           <Route path='/queues/printall' element={<PrintQueueAll />}></Route>
+          <Route path='/queues/prints/:id_customers' element={<Prints />}></Route>
         </Routes>
         {/* </Layout> */}
 
