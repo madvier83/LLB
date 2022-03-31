@@ -107,7 +107,7 @@ export default function PreviewQueue() {
                                 {/* <p>Kode Customer    : {previewSettings.kode_customer ? previewSettings.kode_customer : ''}</p> */}
                                 <p>Kepada YTH       : {previewSettings.nama ? previewSettings.nama : ''}</p>
                                 <div style={{ display: 'flex' }}>
-                                    <p>Alamat       : </p><p id="alamat">{infoCust.alamat ? infoCust.alamat : ''} </p>
+                                    <p>Alamat       : </p><p id="alamat">{previewSettings.alamat ? previewSettings.alamat : ''} </p>
                                 </div>
                                 <p>Provinsi         : {infoCust.provinsi ? infoCust.provinsi : ''}</p>
                                 <p>Kecamatan        : {infoCust.kecamatan ? infoCust.kecamatan : ''}</p>

@@ -77,6 +77,8 @@ export default function Customer() {
             console.log("ini Kirim")
         }
         setVal(data)
+        setAlamatKirim(data.alamat_kirim)
+        setPicKirim(data.pic_kirim)
         setShow(true)
         setkodeposcustomer(data.kodepos_customer)
         setKodeposKirim(data.kodepos_kirim)
@@ -300,7 +302,7 @@ export default function Customer() {
                                                         <Form onSubmit={handleSubmit}>
                                                             <div>
                                                                 <Form.Label>Alamat Kirim</Form.Label>
-                                                                <Form.Control as="textarea" rows={3} value={val.alamat_kirim ? val.alamat_kirim : null} onChange={(e) => setAlamatKirim(e.target.value)} />
+                                                                <Form.Control as="textarea" rows={3} onChange={(e) => setAlamatKirim(e.target.value)} placeholder={val.alamat_kirim ? val.alamat_kirim : null}/>
                                                             </div>
                                                             <div className="mt-3">
                                                                 <Form.Label>KodePos Kirim</Form.Label>
@@ -321,7 +323,6 @@ export default function Customer() {
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>Kelurahan</Form.Label>
                                                                 <Form.Select aria-label="Default select example" onChange={(e) => setHandleKelurahan(e.target.value)}>
-                                                                    <option>Open this select menu</option>
                                                                     {
                                                                         kelurahan.map((value, index) => {
                                                                             return <option key={index} value={value.kelurahan}>{value.kelurahan}</option>
@@ -331,7 +332,7 @@ export default function Customer() {
                                                             </Form.Group>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>PIC Kirim</Form.Label>
-                                                                <Form.Control type="text" value={val.pic_kirim ? val.pic_kirim : null} onChange={(e) => setPicKirim(e.target.value)} />
+                                                                <Form.Control type="text" placeholder={val.pic_kirim ? val.pic_kirim : null} onChange={(e) => setPicKirim(e.target.value)} />
                                                             </Form.Group>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>Total Print</Form.Label>
