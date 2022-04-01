@@ -273,10 +273,10 @@ export default function Edit() {
                             <Form.Group>Pic kirim</Form.Group>
                             <Form.Control type="text" value={pickirim} onChange={(e) => setpickirim(e.target.value)} placeholder="Masukan PIC Kirim" />
                         </Form.Group>
-                        <Form.Group className="mb-3">
+                        {/* <Form.Group className="mb-3">
                             <Form.Group>Customer</Form.Group>
                             <Form.Control type="text" value={customer} onChange={(e) => setCustomer(e.target.value)} placeholder="Masukan PIC Kirim" />
-                        </Form.Group>
+                        </Form.Group> */}
                         <Form.Group className="mb-3">
                             <Form.Group>Telp Kirim</Form.Group>
                             <Form.Control type="text" value={telpkirim} onChange={(e) => settelpkirim(e.target.value)} placeholder="Masukan PIC Kirim" />

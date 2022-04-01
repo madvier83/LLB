@@ -13,23 +13,38 @@ const Prints = () => {
     const [phone, setPhone] = useState('')
     const [wa, setWa] = useState('')
     const [address, setAddress] = useState('')
+    const [infoCust, setInfoCust] = useState([])
     const [data, setData] = useState([])
+
+    useEffect(()=>{
+        const getDatakode = async () => {
+            const url = await axios.get(`/api/preview/${id_customers}`)
+            const data = await url.data[0][0]
+            const getAddress = await axios.get(`/api/getAddress/${data.kodepos}/${data.kelurahan}`)
+            const result = await getAddress.data
+            setInfoCust(result[0])
+        }
+        getDatakode()
+    },)
+
     useEffect(() => {
         const getData = async () => {
             const url = await axios.get(`/api/preview/${id_customers}`)
             const data = await url.data[0]
             // console.log(data)
             // const getAddress = await axios.get(`/api/getAddress/${data.kodepos}/${data.kelurahan}`)
+            // console.log(getAddress)
             // const result = await getAddress.data
             // console.log(result)
             setData(data)
+            console.log(data)
         }
         getData()
     }, [])
+
     const Settings = async () => {
         await axios.get('/api/settings')
             .then(res => {
-
                 // take value from setting where key is fax
                 const fax = res.data.filter(val => val.key === 'fax')
                 setFax(fax[0].value)
@@ -40,7 +55,6 @@ const Prints = () => {
                 // take value from setting where key is phone
                 const phone = res.data.filter(val => val.key === 'nomer_handphone')
                 setPhone(phone[0].value)
-
                 // take value from where key is whatsapp number
                 const whatsapp = res.data.filter(val => val.key === 'whatsapp_number')
                 setWa(whatsapp[0].value)
@@ -57,13 +71,12 @@ const Prints = () => {
     }, [])
     return (
         <>
-            <div>Prints</div>
             <div className="d-print-none m-5">
                 <button onClick={() => window.print()} className="btn btn-primary btn-sm w-25">Print</button>
             </div>
             {data.map((val) => {
                 const arr = []
-                for (let i = val.total_print; i > 0; i--) {
+                for(let i = val.total_print; i > 0; i--) {
                     arr.push(val)
                 }
                 return (
@@ -100,9 +113,9 @@ const Prints = () => {
                                                     <div style={{ display: 'flex' }}>
                                                         <p>Alamat      : </p> <p id='alamat' >{item.alamat ? item.alamat : ''} </p>
                                                     </div>
-                                                    <p>Provinsi    : {item.provinsi ? item.provinsi : ''}</p>
-                                                    <p>Kecamatan   : {item.kecamatan ? item.kecamatan : ''}</p>
-                                                    <p>Kelurahan   : {item.kelurahan ? item.kelurahan : ''} - {item.kodepos ? item.kodepos : ''}</p>
+                                                    <p>Provinsi    : {infoCust.provinsi ? infoCust.provinsi : ''}</p>
+                                                    <p>Kecamatan   : {infoCust.kecamatan ? infoCust.kecamatan : ''}</p>
+                                                    <p>Kelurahan   : {infoCust.kelurahan ? infoCust.kelurahan : ''} - {item.kodepos ? item.kodepos : ''}</p>
                                                     <p>UP          : {item.pic ? item.pic : ''}</p>
                                                     <p>No. Telepon : {item.phone ? item.phone : ' - '}, {item.mobile_phone ? item.mobile_phone : '-'}</p>
                                                 </pre>

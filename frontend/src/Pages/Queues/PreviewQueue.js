@@ -33,7 +33,6 @@ export default function PreviewQueue() {
         } else {
             setInfoCust('')
         }
-
         setPreviewSettings(data)
     }
 

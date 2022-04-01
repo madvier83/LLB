@@ -48,7 +48,6 @@ export default function Customer() {
     const deleteCustomer = async (id) => {
         if (window.confirm("Apakah anda yakin ?")) {
             await axios.delete(`api/customers/${id}`)
-
         }
         getCustomers()
     }
@@ -76,6 +75,7 @@ export default function Customer() {
         } else {
             console.log("ini Kirim")
         }
+        console.log(data.telp_kirim)
         setVal(data)
         setAlamatKirim(data.alamat_kirim)
         setPicKirim(data.pic_kirim)
@@ -165,7 +165,7 @@ export default function Customer() {
             .then(() => {
                 setTimeout(() => {
                     window.location.reload()
-                }, 4000)
+                }, 2000)
             })
             .catch(error => console.log(error.message))
     }
@@ -211,7 +211,7 @@ export default function Customer() {
                                                 <th scope="row">{value.kode_customer}</th>
                                                 <td>{value.golongan_customer}</td>
                                                 <td className="custom">{value.nama}</td>
-                                                <td className="custom">{value.phone}</td>
+                                                <td className="custom">{value.phone+' - '+value.telp_kirim}</td>
                                                 <td>
                                                     <Button as={Link} to={`/customer/edit/${value.id}`} className="btn btn-info btn-sm me-2">Edit</Button>
                                                     <button className="btn btn-danger btn-sm me-2" onClick={() => deleteCustomer(value.id)}>Delete</button>
