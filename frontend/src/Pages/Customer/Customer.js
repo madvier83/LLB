@@ -283,7 +283,7 @@ export default function Customer() {
                                                         </Form.Group>
                                                         <Form.Group className="mb-3">
                                                             <Form.Label>Kelurahan Customer</Form.Label>
-                                                            <Form.Control type="text" readOnly value={kodeposcustomer2.kelurahan ? kodeposcustomer2.kelurahan : ''} />
+                                                            <Form.Control type="text" readOnly value={val.kelurahan_customer ? val.kelurahan_customer : ''} />
                                                         </Form.Group>
                                                         <Form.Group className="mb-3">
                                                             <Form.Label>PIC Customer</Form.Label>
@@ -320,8 +320,8 @@ export default function Customer() {
                                                                 <Form.Control type="text" readOnly value={kodeposkirim2.kecamatan ? kodeposkirim2.kecamatan : ''} />
                                                             </Form.Group>
                                                             <Form.Group className="mb-3">
-                                                                <Form.Label>Kecamatan Kirim</Form.Label>
-                                                                <Form.Control type="text" readOnly value={kodeposkirim2.kelurahan ? kodeposkirim2.kelurahan : ''} />
+                                                                <Form.Label>Kelurahan Kirim</Form.Label>
+                                                                <Form.Control type="text" readOnly value={val.kelurahan_kirim ? val.kelurahan_kirim : ''} />
                                                             </Form.Group>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>PIC Kirim</Form.Label>

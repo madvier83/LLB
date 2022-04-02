@@ -70,6 +70,7 @@ export default class PrintQueuesController extends BaseController {
           .merge({
             alamat_kirim: request.all().alamat_kirim,
             kodepos_kirim: request.all().kodepos_kirim,
+            kelurahan_kirim: request.all().kelurahan_kirim,
             telp_kirim: request.all().telp_kirim
           })
           .save()

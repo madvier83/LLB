@@ -74,7 +74,7 @@ function Queues () {
                       <td>{value.total_print}</td>
                       <td>
                         <Link to={`/queues/prints/${value.id_print}`} className="btn btn-primary btn-sm mr-2 mx-2" target="_blank">Print</Link>
-                        <Link to={`/queues/preview/${value.id_print}`} className="btn btn-warning btn-sm mr-2 mx-2" target="_blank">Preview</Link>
+                        {/* <Link to={`/queues/preview/${value.id_print}`} className="btn btn-warning btn-sm mr-2 mx-2" target="_blank">Preview</Link> */}
                         <button className="btn btn-danger mr-2 mx-2 btn-sm" onClick={() => deleteSettings(value.id_print)}>Delete</button>
                         <Link to={`/queues/edit/${value.id_print}`} className="btn btn-info btn-sm mr-2 mx-2">EDIT</Link>
                         {/* to={`/queues/edit/${value.id_print}`} */}

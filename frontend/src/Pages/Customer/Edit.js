@@ -38,6 +38,8 @@ export default function Edit() {
     const [customer, setCustomer] = useState('')
     const [pickirim, setpickirim] = useState('')
     const [telpkirim, settelpkirim] = useState('')
+    const [matchkel, setMatchkel] = useState('')
+    const [matchkel2, setMatchkel2] = useState('')
 
 
     const { id } = useParams()
@@ -61,6 +63,37 @@ export default function Edit() {
         setpickirim(data.pic_kirim)
         settelpkirim(data.telp_kirim)
         setkodeposkirim(data.kodepos_kirim)
+        setMatchkel(data.kelurahan_customer)
+        setMatchkel2(data.kelurahan_kirim)
+    }
+
+    function Select(props) {
+        if (matchkel === "") {
+            return (
+                <Form.Select aria-label="Default select example">
+                    <option selected disabled >choose kelurahan</option>
+                    {
+                        props.kelurahan.map((value, index) => {
+                            return <option key={index} value={value.kelurahan} >{value.kelurahan}</option>
+                        })
+                    }
+                </Form.Select>
+            )
+        } else {
+            return (
+                <Form.Select aria-label="Default select example">
+                    <option disabled >choose kelurahan</option>
+                    <option selected value={props.matchkel} >{props.matchkel}</option>
+                    {
+                        props.kelurahan.filter(function(array_el){
+                               return props.matchkel != array_el.kelurahan;
+                         }).map((value, index) => {
+                            return <option key={index} value={value.kelurahan} >{value.kelurahan}</option>
+                        })
+                    }
+                </Form.Select>
+            )
+        }
     }
 
     const change = async (kodepos) => {
@@ -78,7 +111,7 @@ export default function Edit() {
                 })
         }
     }
-
+    
     const changeKirim = async (kodepos) => {
         if (kodepos === '') {
             return setKodeposkirim2([])
@@ -100,7 +133,9 @@ export default function Edit() {
         const getKelurahan = async () => {
             try {
                 await axios.get(`/api/getKelurahan/${kodeposcustomer}`)
-                    .then(data => setKelurahan(data.data))
+                    .then(data => {
+                        setKelurahan(data.data)
+                    })
             } catch (error) {
                 console.log('Masukan kodepos')
             }
@@ -113,7 +148,9 @@ export default function Edit() {
         const getkelurahan = async () => {
             try {
                 await axios.get(`/api/getKelurahan/${kodeposkirim}`)
-                    .then(data => setKelurahanKirim(data.data))
+                    .then(data => {
+                        setKelurahanKirim(data.data)
+                    })
             } catch (error) {
 
             }
@@ -198,7 +235,7 @@ export default function Edit() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Group>Kode Pos</Form.Group>
-                            <Form.Control type="number" value={kodeposcustomer} onChange={(e) => { change(e.target.value); setkodeposcustomer(e.target.value) }
+                            <Form.Control type="number" value={kodeposcustomer} onChange={(e) => { change(e.target.value); setkodeposcustomer(e.target.value); setMatchkel("") }
                             } placeholder="Masukan Kode POS" />
                         </Form.Group>
                         <Form.Group className="mb-3">
@@ -215,13 +252,7 @@ export default function Edit() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kelurahan</Form.Label>
-                            <Form.Select aria-label="Default select example" onChange={(e) => setHandleChange(e.target.value)}>
-                                {
-                                    kelurahan.map((value, index) => {
-                                        return <option key={index} value={value.kelurahan}>{value.kelurahan}</option>
-                                    })
-                                }
-                            </Form.Select>
+                            <Select kelurahan={kelurahan} onChange={(e) => setHandleChange(e.target.value)} matchkel={matchkel}/>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Group>Pic Customer</Form.Group>
@@ -261,13 +292,7 @@ export default function Edit() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kelurahan</Form.Label>
-                            <Form.Select aria-label="Default select example" onChange={(e) => setHandleChange2(e.target.value)}>
-                                {
-                                    kelurahankirim.map((value, index) => {
-                                        return <option key={index} value={value.kelurahan} >{value.kelurahan}</option>
-                                    })
-                                }
-                            </Form.Select>
+                            <Select kelurahan={kelurahankirim} onChange={(e) => setHandleChange2(e.target.value)} matchkel={matchkel2}/>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Group>Pic kirim</Form.Group>
