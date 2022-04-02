@@ -23,6 +23,10 @@ const Prints = () => {
             const data = await url.data[0][0]
             const getAddress = await axios.get(`/api/getAddress/${data.kodepos}/${data.kelurahan}`)
             const result = await getAddress.data
+            if (data.kelurahan === null || data.kodepos === null) {
+                alert("kodepos atau kelurahan " + data.nama + " belum diset, mohon ubah di menu edit customer");
+                return (window.location.href = "http://localhost:3000/customer");
+            }
             setInfoCust(result[0])
         }
         getDatakode()

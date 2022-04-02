@@ -65,15 +65,17 @@ export default function Edit() {
         setkodeposkirim(data.kodepos_kirim)
         setMatchkel(data.kelurahan_customer)
         setMatchkel2(data.kelurahan_kirim)
+        setHandleChange(data.kelurahan_customer)
+        setHandleChange2(data.kelurahan_kirim)
     }
 
     function Select(props) {
         if (matchkel === "") {
             return (
-                <Form.Select aria-label="Default select example">
+                <Form.Select aria-label="Default select example" onChange={(e) => setHandleChange(e.target.value)}>
                     <option selected disabled >choose kelurahan</option>
                     {
-                        props.kelurahan.map((value, index) => {
+                        kelurahan.map((value, index) => {
                             return <option key={index} value={value.kelurahan} >{value.kelurahan}</option>
                         })
                     }
@@ -81,12 +83,41 @@ export default function Edit() {
             )
         } else {
             return (
-                <Form.Select aria-label="Default select example">
+                <Form.Select aria-label="Default select example" onChange={(e) => setHandleChange(e.target.value)}>
                     <option disabled >choose kelurahan</option>
-                    <option selected value={props.matchkel} >{props.matchkel}</option>
+                    <option selected value={matchkel} >{matchkel}</option>
                     {
-                        props.kelurahan.filter(function(array_el){
-                               return props.matchkel != array_el.kelurahan;
+                        kelurahan.filter(function(array_el){
+                               return matchkel != array_el.kelurahan;
+                         }).map((value, index) => {
+                            return <option key={index} value={value.kelurahan} >{value.kelurahan}</option>
+                        })
+                    }
+                </Form.Select>
+            )
+        }
+    }
+
+    function SelectKirim(props) {
+        if (matchkel2 === "") {
+            return (
+                <Form.Select aria-label="Default select example" onChange={(e) => setHandleChange2(e.target.value)}>
+                    <option selected disabled >choose kelurahan</option>
+                    {
+                        kelurahankirim.map((value, index) => {
+                            return <option key={index} value={value.kelurahan} >{value.kelurahan}</option>
+                        })
+                    }
+                </Form.Select>
+            )
+        } else {
+            return (
+                <Form.Select aria-label="Default select example" onChange={(e) => setHandleChange2(e.target.value)}>
+                    <option disabled >choose kelurahan</option>
+                    <option selected value={matchkel2} >{matchkel2}</option>
+                    {
+                        kelurahankirim.filter(function(array_el){
+                               return matchkel != array_el.kelurahan;
                          }).map((value, index) => {
                             return <option key={index} value={value.kelurahan} >{value.kelurahan}</option>
                         })
@@ -252,7 +283,7 @@ export default function Edit() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kelurahan</Form.Label>
-                            <Select kelurahan={kelurahan} onChange={(e) => setHandleChange(e.target.value)} matchkel={matchkel}/>
+                            <Select/>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Group>Pic Customer</Form.Group>
@@ -276,7 +307,8 @@ export default function Edit() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Group>Kode Pos Kirim</Form.Group>
-                            <Form.Control type="number" value={kodeposkirim} onChange={(e) => { changeKirim(e.target.value); setkodeposkirim(e.target.value) }} placeholder="Masukan Kode POS" />
+                            <Form.Control type="number" value={kodeposkirim} onChange={(e) => { changeKirim(e.target.value); setkodeposkirim(e.target.value); setMatchkel2("") }} 
+                            placeholder="Masukan Kode POS" />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Provinsi</Form.Label>
@@ -292,7 +324,7 @@ export default function Edit() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kelurahan</Form.Label>
-                            <Select kelurahan={kelurahankirim} onChange={(e) => setHandleChange2(e.target.value)} matchkel={matchkel2}/>
+                            <SelectKirim/>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Group>Pic kirim</Form.Group>
