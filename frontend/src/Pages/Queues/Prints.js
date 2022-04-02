@@ -10,6 +10,7 @@ const Prints = () => {
     const { id_customers } = useParams()
     const [fax, setFax] = useState('')
     const [email, setEmail] = useState('')
+    const [telp, setTelp] = useState('')
     const [phone, setPhone] = useState('')
     const [wa, setWa] = useState('')
     const [address, setAddress] = useState('')
@@ -26,6 +27,16 @@ const Prints = () => {
         }
         getDatakode()
     },)
+
+    useEffect(() => {
+        const hp = async () => {
+            data.map((item)=>{
+                if(item.status === 'alamat_kirim'){setTelp(item.telp_kirim)}
+                else{setTelp(item.phone)}
+            })
+        }
+        hp()
+    })
 
     useEffect(() => {
         const getData = async () => {
@@ -117,7 +128,7 @@ const Prints = () => {
                                                     <p>Kecamatan   : {infoCust.kecamatan ? infoCust.kecamatan : ''}</p>
                                                     <p>Kelurahan   : {infoCust.kelurahan ? infoCust.kelurahan : ''} - {item.kodepos ? item.kodepos : ''}</p>
                                                     <p>UP          : {item.pic ? item.pic : ''}</p>
-                                                    <p>No. Telepon : {item.phone ? item.phone : ' - '}, {item.mobile_phone ? item.mobile_phone : '-'}</p>
+                                                    <p>No. Telepon : {telp ? telp : ' - '},{item.mobile_phone ? item.mobile_phone : '-'}</p>
                                                 </pre>
                                             </div>
                                         </div>

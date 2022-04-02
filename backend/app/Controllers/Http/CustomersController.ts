@@ -109,13 +109,13 @@ export default class CustomersController extends BaseController {
     if (request.all().status === 'alamat_customer') {
       return await Database.from('customers')
         .select(
-          'customers.kode_customer, customers.nama, customers.alamat_customer, customers.kodepos_customer,customers.kelurahan_customer, customers.alamat_customer, customers.pic_cutomer'
+          'customers.kode_customer, customers.nama, customers.alamat_customer, customers.kodepos_customer,customers.kelurahan_customer, customers.alamat_customer, customers.pic_customer'
         )
         .where('id', params.id)
     } else if (request.all().status === 'alamat_kirim') {
       return await Database.from('customers')
         .select(
-          'customers.kode_customer, customers.nama, customers.alamat_customer, customers.kodepos_customer,customers.kelurahan_customer, customers.alamat_customer, customers.pic_cutomer'
+          'customers.kode_customer, customers.nama, customers.alamat_customer, customers.kodepos_customer,customers.kelurahan_customer, customers.alamat_customer, customers.pic_customer'
         )
         .where('id', params.id)
     }

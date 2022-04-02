@@ -8,7 +8,7 @@ import Customers from 'App/Models/Customer'
 export default class PrintQueuesController extends BaseController {
   public async index() {
     return await Database.rawQuery(
-      `SELECT printQueues.id as id_print ,printQueues.id_customers,printQueues.status,printQueues.total_print, customers.kode_customer, customers.nama, customers.phone, customers.mobile_phone,
+      `SELECT printQueues.id as id_print ,printQueues.id_customers,printQueues.status,printQueues.total_print, customers.kode_customer, customers.nama, customers.mobile_phone,
       CASE
         WHEN printQueues.status ='alamat_customer' THEN customers.alamat_customer
         ELSE customers.alamat_kirim
@@ -31,7 +31,7 @@ export default class PrintQueuesController extends BaseController {
 
   public async getSpecificPrint({ params }) {
     return await Database.rawQuery(
-      `SELECT printQueues.id as id_print ,printQueues.id_customers,printQueues.status,printQueues.total_print, customers.kode_customer, customers.nama, customers.phone, customers.mobile_phone,
+      `SELECT printQueues.id as id_print ,printQueues.id_customers,printQueues.status,printQueues.total_print, customers.telp_kirim, customers.kode_customer, customers.nama, customers.phone, customers.mobile_phone,
       CASE
         WHEN printQueues.status ='alamat_customer' THEN customers.alamat_customer
         ELSE customers.alamat_kirim
@@ -70,7 +70,7 @@ export default class PrintQueuesController extends BaseController {
           .merge({
             alamat_kirim: request.all().alamat_kirim,
             kodepos_kirim: request.all().kodepos_kirim,
-            kelurahan_kirim: request.all().kelurahan_kirim,
+            telp_kirim: request.all().telp_kirim
           })
           .save()
       }

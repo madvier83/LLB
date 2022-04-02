@@ -159,7 +159,6 @@ export default function Customer() {
             status: handleChange,
             alamat_kirim: alamatKirim,
             pic_kirim: picKirim,
-            kelurahan_kirim: handleKelurahan,
             kodepos_kirim: kodeposkirim,
         })
             .then(() => {
@@ -321,14 +320,8 @@ export default function Customer() {
                                                                 <Form.Control type="text" readOnly value={kodeposkirim2.kecamatan ? kodeposkirim2.kecamatan : ''} />
                                                             </Form.Group>
                                                             <Form.Group className="mb-3">
-                                                                <Form.Label>Kelurahan</Form.Label>
-                                                                <Form.Select aria-label="Default select example" onChange={(e) => setHandleKelurahan(e.target.value)}>
-                                                                    {
-                                                                        kelurahan.map((value, index) => {
-                                                                            return <option key={index} value={value.kelurahan}>{value.kelurahan}</option>
-                                                                        })
-                                                                    }
-                                                                </Form.Select>
+                                                                <Form.Label>Kecamatan Kirim</Form.Label>
+                                                                <Form.Control type="text" readOnly value={kodeposkirim2.kelurahan ? kodeposkirim2.kelurahan : ''} />
                                                             </Form.Group>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>PIC Kirim</Form.Label>
