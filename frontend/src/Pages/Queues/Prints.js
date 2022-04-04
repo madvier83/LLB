@@ -98,7 +98,7 @@ const Prints = () => {
                     <>
                         {arr.map((item) => {
                             return (
-                                <div className='wrapper__xyz mb-5'>
+                                <div className='wrapper__xyz'>
                                     <div className="wrapper_">
                                         <header>
                                             <div className="image">
@@ -124,9 +124,9 @@ const Prints = () => {
                                         <div className="content">
                                             <div className="truecontent">
                                                 <pre>
-                                                    <p>Kepada YTH   : {item.nama}</p>
+                                                    <p>Kepada YTH  : {item.nama}</p>
                                                     <div style={{ display: 'flex' }}>
-                                                        <p>Alamat      : </p> <p id='alamat' >{item.alamat ? item.alamat : ''} </p>
+                                                    <p>Alamat      : </p> <p id='alamat' >{item.alamat ? item.alamat : ''} </p>
                                                     </div>
                                                     <p>Provinsi    : {infoCust.provinsi ? infoCust.provinsi : ''}</p>
                                                     <p>Kecamatan   : {infoCust.kecamatan ? infoCust.kecamatan : ''}</p>
