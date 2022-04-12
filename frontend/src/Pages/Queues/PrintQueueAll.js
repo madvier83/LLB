@@ -7,7 +7,6 @@ import Logo from '../../Assets/Logo/label.png'
 import '../Print/Print.css'
 export default function PrintQueueAll () {
     const [data, setData] = useState([])
-
     const [email, setEmail] = useState('')
     const [fax, setFax] = useState('')
     const [phone, setPhone] = useState('')
@@ -15,13 +14,23 @@ export default function PrintQueueAll () {
     const [address, setAddress] = useState('')
     const [provinsi, setProvinsi] = useState('')
     const [kecamatan, setKecamatan] = useState('')
+    const [prov, setProv] = useState('')
+    const [kec, setKec] = useState('')
     const [kelurahan, setKelurahan] = useState('')
     const fetchData = async () => {
-        const result = await axios.get(`/api/queue`)
+        const result = await axios.get(`/api/queues`)
         setData(result.data[0])
     }
 
-
+    useEffect(() => {
+        const hp = async () => {
+            data.map((item)=>{
+                if(item.kelurahan == 'CIBEUREUM' ){setProv('Cimahi Selatan')}
+                else{setProv('Margahayu Raya')}
+            })
+        }
+        hp()
+    })
     useEffect(() => {
         fetchData()
         // return () => {
@@ -93,6 +102,7 @@ export default function PrintQueueAll () {
             <div className="d-print-none m-5">
                 <button onClick={() => window.print()} className="btn btn-primary btn-sm w-25">Print</button>
             </div>
+            {console.log(data)}
             {data.map((val, index) => {
                 const arr = []
                 for (let i = val.total_print; i > 0; i--) {
@@ -102,7 +112,7 @@ export default function PrintQueueAll () {
                     <>
                         {/* destruc object from setInfoCust */}
                         {arr.map(val => {
-                            const { kodepos, nama, alamat, pic, kode_customer } = val
+                            const { kodepos, nama, alamat, pic, kode_customer, kelurahan, phone } = val
                             return (
                                 <div className="wrapper__xyz mb-5" >
                                     <div className="wrapper_last">
@@ -140,7 +150,7 @@ export default function PrintQueueAll () {
                                                     <p>Kecamatan   : {kecamatan ? kecamatan : ''}</p>
                                                     <p>Kelurahan   : {kelurahan ? kelurahan : ''} - {kodepos ? kodepos : ''}</p>
                                                     <p>UP          : {pic ? pic : ''}</p>
-                                                    <p>No. Telepon : {val.phone ? val.phone : ' - '}, {val.mobile_phone ? val.mobile_phone : '-'}</p>
+                                                    <p>No. Telepon : {phone ? phone : ' - '}, {val.mobile_phone ? val.mobile_phone : '-'}</p>
                                                 </pre>
                                             </div>
                                         </div>

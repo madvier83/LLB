@@ -50,6 +50,7 @@ Route.group(() => {
 
   /* Print Routes */
   Route.get('queue', 'PrintQueuesController.index')
+  Route.get('queues', 'PrintQueuesController.printall')
   Route.get('preview/:id', 'PrintQueuesController.getSpecificPrint')
   Route.get('queue/:id', 'PrintQueuesController.edit')
   Route.post('queue', 'PrintQueuesController.store')

@@ -6,8 +6,35 @@ import Historyprint from 'App/Models/Historyprint'
 import Customers from 'App/Models/Customer'
 import Printqueues from 'App/Models/PrintQueue'
 
-
 export default class PrintQueuesController extends BaseController {
+
+  public async printall(){
+    return await Database.rawQuery(
+      `SELECT printQueues.id as id_print ,printQueues.id_customers, printQueues.status , printQueues.total_print, customers.mobile_phone ,customers.kode_customer, customers.nama, customers.mobile_phone, customers.telp_kirim,
+      CASE
+        WHEN printQueues.status ='alamat_customer' THEN customers.alamat_customer
+        ELSE customers.alamat_kirim
+      END AS alamat,
+      CASE
+        WHEN printQueues.status ='alamat_customer' THEN customers.phone
+        ELSE customers.telp_kirim
+      END AS phone,
+      CASE
+        WHEN printQueues.status ='alamat_customer' THEN customers.kodepos_customer
+        ELSE customers.kodepos_kirim
+      END AS kodepos,
+      CASE
+        WHEN printQueues.status ='alamat_customer' THEN customers.kelurahan_customer
+        ELSE customers.kelurahan_kirim
+      END AS kelurahan,
+      CASE
+        WHEN printQueues.status ='alamat_customer' THEN customers.pic_customer
+        ELSE customers.pic_kirim
+      END AS pic
+      FROM printQueues INNER JOIN customers ON printQueues.id_customers = customers.id INNER JOIN tbl_kodepos ON tbl_kodepos.kelurahan = customers.kelurahan_kirim || customers.kelurahan_customer`
+    )
+  }
+
   public async index() {
     return await Database.rawQuery(
       `SELECT printQueues.id as id_print ,printQueues.id_customers,printQueues.status,printQueues.total_print, customers.kode_customer, customers.nama, customers.mobile_phone,
@@ -77,7 +104,7 @@ export default class PrintQueuesController extends BaseController {
           })
           .save()
       }
-
+      
       await Printqueues.create({
         id_customers: request.all().id_customers,
         total_print: request.all().total_print,
@@ -110,13 +137,13 @@ export default class PrintQueuesController extends BaseController {
         total_print: request.all().total_print,
         status: request.all().status,
         seed: request.all().seed,
-      })
-      ;(await Historyprint.findOrFail(params.id))
+      });
+      (await Historyprint.findOrFail(params.id))
         .merge({
           id_customer: request.all().id_customers,
           total_print: request.all().total_print,
         })
-        .save()
+        .save()    
 
       return { message: 'success' }
     } catch (error) {
