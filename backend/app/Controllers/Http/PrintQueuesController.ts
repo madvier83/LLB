@@ -16,6 +16,14 @@ export default class PrintQueuesController extends BaseController {
         ELSE customers.alamat_kirim
       END AS alamat,
       CASE
+        WHEN printQueues.status ='alamat_customer' THEN customers.provinsi_customer
+        ELSE customers.provinsi_kirim
+      END AS provinsi,
+      CASE
+        WHEN printQueues.status ='alamat_customer' THEN customers.kecamatan_customer
+        ELSE customers.kecamatan_kirim
+      END AS kecamatan,
+      CASE
         WHEN printQueues.status ='alamat_customer' THEN customers.phone
         ELSE customers.telp_kirim
       END AS phone,
@@ -31,7 +39,7 @@ export default class PrintQueuesController extends BaseController {
         WHEN printQueues.status ='alamat_customer' THEN customers.pic_customer
         ELSE customers.pic_kirim
       END AS pic
-      FROM printQueues INNER JOIN customers ON printQueues.id_customers = customers.id INNER JOIN tbl_kodepos ON tbl_kodepos.kelurahan = customers.kelurahan_kirim || customers.kelurahan_customer`
+      FROM printQueues INNER JOIN customers ON printQueues.id_customers = customers.id INNER JOIN tbl_kodepos ON tbl_kodepos.kelurahan = customers.kelurahan_kirim || customers.kelurahan_customer WHERE DATE_FORMAT(printQueues.created_at,'%Y-%m-%d') = CURDATE()`
     )
   }
 

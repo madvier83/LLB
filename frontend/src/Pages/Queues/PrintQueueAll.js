@@ -14,23 +14,16 @@ export default function PrintQueueAll () {
     const [address, setAddress] = useState('')
     const [provinsi, setProvinsi] = useState('')
     const [kecamatan, setKecamatan] = useState('')
-    const [prov, setProv] = useState('')
-    const [kec, setKec] = useState('')
+    const [provinsi2, setProvinsi2] = useState('')
+    const [kecamatan2, setKecamatan2] = useState('')
     const [kelurahan, setKelurahan] = useState('')
+    const [kelurahan2, setKelurahan2] = useState('')
     const fetchData = async () => {
         const result = await axios.get(`/api/queues`)
         setData(result.data[0])
+        console.log(data);
     }
 
-    useEffect(() => {
-        const hp = async () => {
-            data.map((item)=>{
-                if(item.kelurahan == 'CIBEUREUM' ){setProv('Cimahi Selatan')}
-                else{setProv('Margahayu Raya')}
-            })
-        }
-        hp()
-    })
     useEffect(() => {
         fetchData()
         // return () => {
@@ -102,7 +95,6 @@ export default function PrintQueueAll () {
             <div className="d-print-none m-5">
                 <button onClick={() => window.print()} className="btn btn-primary btn-sm w-25">Print</button>
             </div>
-            {console.log(data)}
             {data.map((val, index) => {
                 const arr = []
                 for (let i = val.total_print; i > 0; i--) {
@@ -112,7 +104,7 @@ export default function PrintQueueAll () {
                     <>
                         {/* destruc object from setInfoCust */}
                         {arr.map(val => {
-                            const { kodepos, nama, alamat, pic, kode_customer, kelurahan, phone } = val
+                            const { kodepos, nama, alamat, pic, kode_customer, kelurahan, phone, kecamatan, provinsi } = val
                             return (
                                 <div className="wrapper__xyz mb-5" >
                                     <div className="wrapper_last">

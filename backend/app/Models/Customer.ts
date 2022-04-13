@@ -42,6 +42,17 @@ export default class Customers extends BaseModel {
   public kodepos_kirim: string
 
   @column()
+  public kecamatan_kirim:string
+
+  @column()
+  public kecamatan_customer:string
+
+  @column()
+  public provinsi_kirim:string
+
+  @column()
+  public provinsi_customer:string
+  @column()
   public kelurahan_kirim: string
 
   @column()

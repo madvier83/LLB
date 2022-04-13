@@ -36,6 +36,10 @@ function CreateCustomer() {
     const [kodeposkirim, setkodeposkirim] = useState('')
     const [kodeposkirim2, setKodeposkirim2] = useState([])
     const [kelurahankirim, setKelurahanKirim] = useState([])
+    const [kecamatankirims, setkecamatankirim] = useState('')
+    const [kecamatancustomers, setkecamatancustomer] = useState('')
+    const [provinsikirims, setprovinsikirim] = useState('')
+    const [provinsicustomers, setprovinsicustomer] = useState('')
     const [handleChange2, setHandleChange2] = useState('')
     const [customer, setCustomer] = useState('')
     const [pickirim, setpickirim] = useState('')
@@ -108,6 +112,10 @@ function CreateCustomer() {
             alamatkirim: alamat_kirim,
             kodeposkirim: kodeposkirim,
             kelurahankirim: handleChange2,
+            kecamatankirim: document.getElementById('kecamatankirim').value,
+            kecamatancustomer: document.getElementById('kecamatancustomer').value,
+            provinsikirim: document.getElementById('provinsikirim').value,
+            provinsicustomer: document.getElementById('provinsicustomer').value,
             pickirim: pickirim,
             customer: customer,
             telp_kirim: telpkirim,
@@ -148,7 +156,7 @@ function CreateCustomer() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Provinsi Customer</Form.Label>
-                            <Form.Control type="text" readOnly value={kodeposcustomer2.provinsi} />
+                            <Form.Control type="text" readOnly value={kodeposcustomer2.provinsi} id="provinsicustomer" onClick={(e)=>setprovinsicustomer(e.target.value)} />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kota Customer</Form.Label>
@@ -156,7 +164,7 @@ function CreateCustomer() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kecamatan Customer</Form.Label>
-                            <Form.Control type="text" readOnly value={kodeposcustomer2.kecamatan} />
+                            <Form.Control type="text" readOnly value={kodeposcustomer2.kecamatan} id="kecamatancustomer" onClick={(e)=>setkodeposcustomer(e.target.value)} />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kelurahan Customer</Form.Label>
@@ -195,7 +203,7 @@ function CreateCustomer() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Provinsi Kirim</Form.Label>
-                            <Form.Control type="text" readOnly value={kodeposkirim2.provinsi} />
+                            <Form.Control type="text" readOnly value={kodeposkirim2.provinsi} id="provinsikirim" onChange={(e)=>setprovinsikirim(e.target.value)} />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kota Kirim</Form.Label>
@@ -203,7 +211,7 @@ function CreateCustomer() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kecamatan Kirim</Form.Label>
-                            <Form.Control type="text" readOnly value={kodeposkirim2.kecamatan} />
+                            <Form.Control type="text" readOnly value={kodeposkirim2.kecamatan} id="kecamatankirim" onChange={(e)=>setkecamatankirim(e.target.value)} />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kelurahan Kirim</Form.Label>

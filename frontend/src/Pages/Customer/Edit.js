@@ -231,6 +231,10 @@ export default function Edit() {
             mobile_phone: mobilePhone,
             fax: fax,
             alamatkirim: alamat_kirim,
+            kecamatankirim: document.getElementById('kecamatankirim').value,
+            kecamatancustomer: document.getElementById('kecamatancustomer').value,
+            provinsikirim: document.getElementById('provinsikirim').value,
+            provinsicustomer: document.getElementById('provinsicustomer').value,
             kodeposkirim: kodeposkirim,
             kelurahankirim: handleChange2,
             pickirim: pickirim,
@@ -271,7 +275,7 @@ export default function Edit() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Provinsi</Form.Label>
-                            <Form.Control type="text" readOnly value={kodeposcustomer2.provinsi ? kodeposcustomer2.provinsi : ''} />
+                            <Form.Control type="text" readOnly value={kodeposcustomer2.provinsi ? kodeposcustomer2.provinsi : ''} id="provinsicustomer" />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kota</Form.Label>
@@ -279,7 +283,7 @@ export default function Edit() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kecamatan</Form.Label>
-                            <Form.Control type="text" readOnly value={kodeposcustomer2.kecamatan ? kodeposcustomer2.kecamatan : ''} />
+                            <Form.Control type="text" readOnly value={kodeposcustomer2.kecamatan ? kodeposcustomer2.kecamatan : ''} id="kecamatancustomer"/>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kelurahan</Form.Label>
@@ -312,7 +316,7 @@ export default function Edit() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Provinsi</Form.Label>
-                            <Form.Control type="text" readOnly value={kodeposkirim2.provinsi ? kodeposkirim2.provinsi : ''} />
+                            <Form.Control type="text" readOnly value={kodeposkirim2.provinsi ? kodeposkirim2.provinsi : ''} id="provinsikirim" />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kota</Form.Label>
@@ -320,7 +324,7 @@ export default function Edit() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kecamatan</Form.Label>
-                            <Form.Control type="text" readOnly value={kodeposkirim2.kecamatan ? kodeposkirim2.kecamatan : ''} />
+                            <Form.Control type="text" readOnly value={kodeposkirim2.kecamatan ? kodeposkirim2.kecamatan : ''} id="kecamatankirim" />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Kelurahan</Form.Label>
