@@ -106,7 +106,7 @@ export default function PrintQueueAll () {
                         {arr.map(val => {
                             const { kodepos, nama, alamat, pic, kode_customer, kelurahan, phone, kecamatan, provinsi } = val
                             return (
-                                <div className="wrapper__xyz mb-5" >
+                                <div className="wrapper__xyz " >
                                     <div className="wrapper_last">
                                         <header>
                                             <div className="image">

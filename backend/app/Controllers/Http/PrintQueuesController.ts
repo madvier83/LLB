@@ -39,7 +39,7 @@ export default class PrintQueuesController extends BaseController {
         WHEN printQueues.status ='alamat_customer' THEN customers.pic_customer
         ELSE customers.pic_kirim
       END AS pic
-      FROM printQueues INNER JOIN customers ON printQueues.id_customers = customers.id INNER JOIN tbl_kodepos ON tbl_kodepos.kelurahan = customers.kelurahan_kirim || customers.kelurahan_customer WHERE DATE_FORMAT(printQueues.created_at,'%Y-%m-%d') = CURDATE()`
+      FROM printQueues INNER JOIN customers ON printQueues.id_customers = customers.id WHERE DATE_FORMAT(printQueues.created_at,'%Y-%m-%d') = CURDATE()`
     )
   }
 

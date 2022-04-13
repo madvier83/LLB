@@ -43,7 +43,7 @@ function Queues () {
             </div>
             <div className="col">
               <div className="d-flex justify-content-center">
-                {/* <Link className="btn btn-primary" to='/queues/printall'  >Print All</Link> */}
+                <Link className="btn btn-primary" to='/queues/printall'  >Print All</Link>
               </div>
             </div>
           </div>
