@@ -294,6 +294,7 @@ export default function Customer() {
                                                             <Form.Control required type="number" value={qty} onChange={(e) => setQty(e.target.value)} />
                                                         </Form.Group>
                                                         <button type="submit" onClick={notify} className="btn btn-primary">Save</button>
+                                                        <Button as={Link} to={`/customer/edit/${val.id}`} className="btn btn-info ms-2">Edit</Button>
                                                     </Form>
                                                 </>
                                                 : handleChange === "alamat_kirim" ?
@@ -301,11 +302,11 @@ export default function Customer() {
                                                         <Form onSubmit={handleSubmit}>
                                                             <div>
                                                                 <Form.Label>Alamat Kirim</Form.Label>
-                                                                <Form.Control as="textarea" rows={3} onChange={(e) => setAlamatKirim(e.target.value)} placeholder={val.alamat_kirim ? val.alamat_kirim : null}/>
+                                                                <Form.Control as="textarea" rows={3} readOnly onChange={(e) => setAlamatKirim(e.target.value)} placeholder={val.alamat_kirim ? val.alamat_kirim : null}/>
                                                             </div>
                                                             <div className="mt-3">
                                                                 <Form.Label>KodePos Kirim</Form.Label>
-                                                                <input type="text" className="form-control" value={kodeposkirim} onChange={(e) => { kirim(e.target.value); setKodeposKirim(e.target.value) }} />
+                                                                <input type="text" className="form-control" readOnly value={kodeposkirim} onChange={(e) => { kirim(e.target.value); setKodeposKirim(e.target.value) }} />
                                                             </div>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>Provinsi Kirim</Form.Label>
@@ -325,13 +326,14 @@ export default function Customer() {
                                                             </Form.Group>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>PIC Kirim</Form.Label>
-                                                                <Form.Control type="text" placeholder={val.pic_kirim ? val.pic_kirim : null} onChange={(e) => setPicKirim(e.target.value)} />
+                                                                <Form.Control type="text" readOnly placeholder={val.pic_kirim ? val.pic_kirim : null} onChange={(e) => setPicKirim(e.target.value)} />
                                                             </Form.Group>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>Total Print</Form.Label>
                                                                 <Form.Control required type="number" value={qty} onChange={(e) => setQty(e.target.value)} />
                                                             </Form.Group>
                                                             <button type="submit" onClick={notify} className="btn btn-primary">Save</button>
+                                                            <Button as={Link} to={`/customer/edit/${val.id}`} className="btn btn-info ms-2">Edit</Button>
                                                         </Form>
                                                     </> : ''}
                                         </div>
