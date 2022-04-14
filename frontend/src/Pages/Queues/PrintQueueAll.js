@@ -26,6 +26,7 @@ export default function PrintQueueAll () {
 
     useEffect(() => {
         fetchData()
+        console.log(data);
         // return () => {
         //     setData([])
         // }
@@ -35,8 +36,8 @@ export default function PrintQueueAll () {
     useEffect(() => {
         const result = () => {
             data.map((val) => {
-                if (val.kelurahan === null || val.kodepos === null) {
-                    alert("kodepos atau kelurahan " + val.nama + " belum diset");
+                if (val.kelurahan === null || val.kodepos === null ||val.kecamatan === null || val.provinsi === null) {
+                    alert("data " + val.nama + " belum diset");
                     return (window.location.href = "http://localhost:3000/customer");
                 } else {
                     axios
